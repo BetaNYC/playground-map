@@ -49,24 +49,32 @@
 </script>
 
 <div class="listings">
-  <h4>
+  <h3 class="weight-400">
     {#if filters.length}
       There are
     {/if}
-    {listings.length} playgrounds
+    <strong>{listings.length} playgrounds</strong>
     {#if filters.length}
-      with {filters.map((i) => i.name).join("; ")} in the city.
+      with 
+      {#each filters as filter}
+      <br/><span style="color: {filter.color};">{filter.name}</span>
+      {/each}
+      in the city.
     {/if}
-  </h4>
+  </h3>
   {#if $queryAddress}
-    <h5>
-      {listings.filter((i) => i.distance < 1).length} are within 1 mile of the address.
-    </h5>
+    <h4>
+      {listings.filter((i) => i.distance < 1).length} are within 1 mile of {$queryAddress.name}.
+    </h4>
   {/if}
   <ul>
     {#each listings as item (item.id)}
       <li on:click={() => itemClick(item)}>
-        {item.name}
+        {#if item?.distance < 1 }
+          <strong>{item.name}</strong>
+        {:else}
+          {item.name}
+        {/if}
         <div class="labels">
           {#each item.labels as label}
             <div
@@ -84,7 +92,7 @@
 <style>
   .listings {
     padding: 1rem 2rem;
-    background-color: #ddd;
+    background-color: rgb(238, 238, 238);
     overflow-y: scroll;
     height: 100%;
   }
@@ -107,5 +115,9 @@
     height: 0.8em;
     display: inline-block;
     margin-right: 2px;
+  }
+
+  .weight-400{
+    font-weight: 400;
   }
 </style>
