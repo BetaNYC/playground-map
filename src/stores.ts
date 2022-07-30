@@ -51,7 +51,7 @@ async function fetchPlaygrounds(set) {
       ...playground,
       coordinates: [+playground.lat, +playground.lon],
       id: i + 1,
-      url: "https://www.nycgovparks.org/facilities/playgrounds/" + (i + 1),
+      url: "https://www.nycgovparks.org/parks/" + playground.Prop_ID + "/facilities/playgrounds",
       propId: playground.Prop_ID,
       name: playground.Name,
       accessible: playground.Accessible === "Yes",
