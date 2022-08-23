@@ -178,7 +178,7 @@
 </script>
 
 <main class="p-0 max-w-screen-xl text-gray-700 px-6 py-0 mx-auto my-8">
-  <h1 class="text-4xl font-bold">NYC Parks Playgrounds</h1>
+  <h1 class="text-5xl font-bold">NYC Parks Playgrounds</h1>
   <p>
     Enter an address to get parks closest to you, then use filters to refine
     your search. Based on NYC Park's
@@ -204,7 +204,7 @@
     </div>
   </div>
 
-  <h2 class="text-2xl">What does accessible and inclusive icons mean?</h2>
+  <h2 class="text-3xl my-2">What do the accessible and inclusive icons mean?</h2>
   <div class="mx-auto w-11/12">
     <Details />
   </div>

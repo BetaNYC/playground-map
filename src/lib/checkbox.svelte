@@ -5,7 +5,7 @@
 </script>
 
 <label
-  class="px-1 py-2 font-base leading-4 align-middle font-medium inline-block relative 
+  class="px-1 py-2 text-xl leading-4 align-middle font-medium inline-block relative 
   hover:bg-gray-100
   hover:outline hover:outline-1 cursor-pointer"
   ><input type="checkbox" bind:checked />

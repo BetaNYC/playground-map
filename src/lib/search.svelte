@@ -64,10 +64,14 @@
   }
 </script>
 
-<form on:submit|preventDefault={_set} class="text-base flex justify-center align-top relative">
+<form
+  on:submit|preventDefault={_set}
+  class="text-xl flex justify-center align-top relative"
+>
   <div class="flex-1 mr-2">
     <input
-      class="outline outline-offset-2 outline-1 w-full p-1 mt-1 mb-3"
+      class="outline outline-offset-2 outline-1 w-full p-1 mt-1 mb-3
+      focus:outline-4"
       placeholder="Enter a NYC Address"
       type="text"
       name="address"
@@ -75,10 +79,10 @@
       autocomplete="off"
       on:keyup={_search}
     />
-    <ul class="m-0 bg-gray-100" role="menu" aria-label="Address List">
+    <ol class="m-0 bg-gray-100" role="menu" aria-label="Address List">
       {#each searchAddrs as addr}
         <li
-          role="option"
+          role="menuitemradio"
           tabindex="0"
           class="pl-2"
           on:click={() => _setLocation(addr)}
@@ -87,10 +91,11 @@
           {addr.name}
         </li>
       {/each}
-    </ul>
+    </ol>
   </div>
   <button
     type="submit"
-    class="bg-green-800 broder-none text-white px-5 mb-2 pointer-events-auto h-10"
-  >Submit</button>
+    class="bg-green-800 broder-none text-white px-5 mb-2 pointer-events-auto h-10
+    focus:outline-4">Submit</button
+  >
 </form>

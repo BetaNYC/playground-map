@@ -24,16 +24,16 @@ export default function (map, props, convert = false, flyTo = true) {
       return p[fieldName];
     })
     .map(({ name, icon }) => {
-      return `<div class="flex flex-row items-center mt-2 text-sm w-full">
-        <img class="h-10 mr-1" src="${icon}"/>
-        <span class="mr-2">${name}</span>
+      return `<div class="flex flex-row items-center mt-2 text-base w-full place-content-between">
+      <span class="mr-2 text-left leading-4">${name}</span>  
+      <img class="h-10 mr-1" src="${icon}" alt=""/>
       </div>`;
     })
     .join("");
 
   let distance = "";
   if (p.distance) {
-    distance += "<p class='text-lg'>" + p.distance.toFixed(2) + " miles the address</p>";
+    distance += "<p class='text-xl'>" + p.distance.toFixed(2) + " miles the address</p>";
   }
 
   if (flyTo) {
@@ -44,10 +44,10 @@ export default function (map, props, convert = false, flyTo = true) {
     .setLngLat(p.coordinates)
     .setHTML(
       `
-      <a href="${p.url}" target="_blank"><h3 class="text-xl font-bold leading-5 my-2">${p.name}</h3></a>
-      <h4 class="text-lg mb-4 leading-4 text-gray-500">${p.Location}</h4>
+      <a href="${p.url}" target="_blank"><h3 class="text-2xl font-bold leading-5 my-2">${p.name}</h3></a>
+      <h4 class="text-xl mb-4 leading-4 text-gray-500">${p.Location}</h4>
       ${distance}
-    ` + icons
+    ` + icons + `<p class="pt-2 italic"><a href="#listings" class="border-t-2 border-black border-opacity-5">Go back to playground listings.</a></p>`
     )
     .addTo(map);
 }

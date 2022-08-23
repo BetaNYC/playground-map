@@ -48,8 +48,8 @@
   }
 </script>
 
-<div class="overflow-y-scroll bg-gray-50 px-8 py-4 h-full">
-  <h3 class="text-lg font-semibold mb-2">
+<div class="overflow-y-scroll bg-gray-50 px-8 py-4 h-full" id="listings">
+  <h2 class="text-xl font-semibold mb-2">
     {#if filters.length}
       There are
     {/if}
@@ -61,14 +61,14 @@
       {/each}
       in the city.
     {/if}
-  </h3>
+  </h2>
   {#if $queryAddress}
-    <h4 class="text-lg mb-4">
+    <h4 class="text-xl mb-4">
       {listings.filter((i) => i.distance < 1).length} are within 1 mile of {$queryAddress.name}
       (<strong>in bold</strong>).
     </h4>
   {/if}
-  <ul class="" role="menu" aria-label="Playground List">
+  <ol class="" role="menu" aria-label="Playground List">
     {#each listings as item (item.id)}
       <li
         on:click={() => itemClick(item)}
@@ -79,7 +79,8 @@
           }
         }}
         tabindex="0"
-        class="hover:bg-gray-200 focus:bg-gray-200 pl-2 
+        role="menuitemradio"
+        class="hover:bg-gray-200 focus:bg-gray-200 pl-2 text-xl
         flex flex-row place-content-between border-b-2 border-black border-opacity-5 cursor-pointer"
       >
         {#if item?.distance < 1}
@@ -98,5 +99,5 @@
         </div>
       </li>
     {/each}
-  </ul>
+    </ol>
 </div>
