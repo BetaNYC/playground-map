@@ -67,7 +67,7 @@
 <form on:submit|preventDefault={_set} class="text-base flex justify-center align-top relative">
   <div class="flex-1 mr-2">
     <input
-      class="outline outline-offset-2 outline-1 w-full p-1 mt-1"
+      class="outline outline-offset-2 outline-1 w-full p-1 mt-1 mb-3"
       placeholder="Enter a NYC Address"
       type="text"
       name="address"
@@ -75,12 +75,12 @@
       autocomplete="off"
       on:keyup={_search}
     />
-    <ul class="m-0 pl-2" role="combobox" aria-label="address list">
+    <ul class="m-0 bg-gray-100" role="menu" aria-label="Address List">
       {#each searchAddrs as addr}
         <li
           role="option"
           tabindex="0"
-          class=""
+          class="pl-2"
           on:click={() => _setLocation(addr)}
           on:keydown={(e) => e.key === "Enter" && _setLocation(addr)}
         >
@@ -91,6 +91,6 @@
   </div>
   <button
     type="submit"
-    class="bg-green-800 broder-none text-white px-5 py-2 mb-2 pointer-events-auto h-10"
+    class="bg-green-800 broder-none text-white px-5 mb-2 pointer-events-auto h-10"
   >Submit</button>
 </form>

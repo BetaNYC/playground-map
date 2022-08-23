@@ -16,14 +16,14 @@ export const filters = [
   },
   {
     name: "Comfort stations",
-    color: "#7eafc1",
+    color: "#5394ac",
     checked: false,
     icon: "https://www.nycgovparks.org/common_images/img/restroom.gif",
     fieldName: "comfort_station",
   },
   {
     name: "ADA accessible comfort stations",
-    color: "#008ec4",
+    color: "#00729d",
     checked: false,
     icon: "https://www.nycgovparks.org/common_images/img/restroom_accessible.gif",
     fieldName: "ada_comfort_station",

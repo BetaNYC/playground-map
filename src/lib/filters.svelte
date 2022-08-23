@@ -5,7 +5,7 @@
   $selectedFilters = [...$selectedFilters]
 </script>
 
-<div class="max-width-50">
+<div class="w-2/3">
   {#each $selectedFilters as filter (filter.name)}
     <Checkbox
       name={filter.name}
@@ -14,9 +14,3 @@
     />
   {/each}
 </div>
-
-<style>
-  .max-width-50 {
-    width: 50vw;
-  }
-</style>

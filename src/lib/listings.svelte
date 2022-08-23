@@ -48,29 +48,41 @@
   }
 </script>
 
-<div class="listings">
-  <h3 class="weight-400">
+<div class="overflow-y-scroll bg-gray-50 px-8 py-4 h-full">
+  <h3 class="text-lg font-semibold mb-2">
     {#if filters.length}
       There are
     {/if}
     <strong>{listings.length} playgrounds</strong>
     {#if filters.length}
-      with 
+      with
       {#each filters as filter}
-      <br/><span style="color: {filter.color};">{filter.name}</span>
+        <br /><span style="color: {filter.color};">{filter.name}</span>
       {/each}
       in the city.
     {/if}
   </h3>
   {#if $queryAddress}
-    <h4>
-      {listings.filter((i) => i.distance < 1).length} are within 1 mile of {$queryAddress.name}.
+    <h4 class="text-lg mb-4">
+      {listings.filter((i) => i.distance < 1).length} are within 1 mile of {$queryAddress.name}
+      (<strong>in bold</strong>).
     </h4>
   {/if}
-  <ul>
+  <ul class="" role="menu" aria-label="Playground List">
     {#each listings as item (item.id)}
-      <li on:click={() => itemClick(item)}>
-        {#if item?.distance < 1 }
+      <li
+        on:click={() => itemClick(item)}
+        on:keydown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            itemClick(item);
+          }
+        }}
+        tabindex="0"
+        class="hover:bg-gray-200 focus:bg-gray-200 pl-2 
+        flex flex-row place-content-between border-b-2 border-black border-opacity-5 cursor-pointer"
+      >
+        {#if item?.distance < 1}
           <strong>{item.name}</strong>
         {:else}
           {item.name}
@@ -78,7 +90,7 @@
         <div class="labels">
           {#each item.labels as label}
             <div
-              class="icon"
+              class="w-3 h-3 inline-block mr-0.5"
               style="background-color: {label.color}"
               title={label.name}
             />
@@ -88,36 +100,3 @@
     {/each}
   </ul>
 </div>
-
-<style>
-  .listings {
-    padding: 1rem 2rem;
-    background-color: rgb(238, 238, 238);
-    overflow-y: scroll;
-    height: 100%;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  li {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-  }
-
-  .icon {
-    width: 0.8em;
-    height: 0.8em;
-    display: inline-block;
-    margin-right: 2px;
-  }
-
-  .weight-400{
-    font-weight: 400;
-  }
-</style>

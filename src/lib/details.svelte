@@ -1,5 +1,4 @@
-<h2>Details on Accessibility</h2>
-<p>Click on a park on the map or list for more details.</p>
+<h2 class="text-2xl font-semibold">Details on Accessibility</h2>
 <div class="container">
   <div class="row">
     <img

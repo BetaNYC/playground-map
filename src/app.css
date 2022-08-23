@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.icon{
-  display: flex;
-  align-items:center;
+body{
+  font-family: "Open Sans", sans-serif;
 }
 
-.icon img{
-  margin-right: 3px;
-  height: 30px;
+.mapboxgl-popup-close-button {
+  width: 1rem;
+  height: 1rem;
+  font-size: 1.2rem;
+}
+
+.mapboxgl-popup-content{
+  padding: 15px 15px 20px !important;
 }

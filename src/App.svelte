@@ -177,7 +177,7 @@
   }
 </script>
 
-<main>
+<main class="p-0 max-w-screen-xl text-gray-700 px-6 py-0 mx-auto my-8">
   <h1 class="text-4xl font-bold">NYC Parks Playgrounds</h1>
   <p>
     Enter an address to get parks closest to you, then use filters to refine
@@ -186,12 +186,13 @@
       >playgrounds page</a
     >.
   </p>
-  <div class="container">
+  <p>Click on the map or select an item on the list for more details.</p>
+  <div class="flex-grow my-4 mx-auto w-auto relative">
     <Search />
     <Filters />
   </div>
-  <div class="container">
-    <div class="columns">
+  <div class="flex-grow my-4 mx-auto w-auto relative">
+    <div class="flex relative flex-wrap">
       <div class="is-half">
         <Listings />
       </div>
@@ -204,24 +205,6 @@
 </main>
 
 <style>
-  main {
-    margin: 30px auto;
-    max-width: 1500px;
-    color: #444;
-    padding: 0 25px;
-    font-family: "Open Sans", sans-serif;
-  }
-  .container {
-    flex-grow: 1;
-    margin: 1rem auto;
-    position: relative;
-    width: auto;
-  }
-  .columns {
-    display: flex;
-    position: relative;
-  }
-
   .is-half {
     flex: none;
     flex-direction: row;
