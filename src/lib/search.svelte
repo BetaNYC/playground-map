@@ -19,7 +19,9 @@
           $mapStore.flyTo({ center, zoom });
 
           if (marker) marker.remove();
-          marker = new Marker({color: "#FF0000"}).setLngLat(center).addTo($mapStore);
+          marker = new Marker({ color: "#FF0000" })
+            .setLngLat(center)
+            .addTo($mapStore);
         } else {
           //throw error
         }
@@ -35,7 +37,9 @@
     $mapStore.flyTo({ center, zoom });
 
     if (marker) marker.remove();
-    marker = new Marker({color: "#FF0000"}).setLngLat(center).addTo($mapStore);
+    marker = new Marker({ color: "#FF0000" })
+      .setLngLat(center)
+      .addTo($mapStore);
   }
 
   function _search() {
@@ -61,35 +65,43 @@
 </script>
 
 <form on:submit|preventDefault={_set}>
- <div>
+  <div>
     <input
-    id="address"
-    placeholder="Enter a NYC Address"
-    type="text"
-    name="address"
-    bind:value={name}
-    autocomplete="off"
-    on:keyup={_search}
-  />
-  <ul>
-    {#each searchAddrs as addr}
-      <li on:click={() => _setLocation(addr)}>{addr.name}</li>
-    {/each}
-  </ul>
- </div>
+      id="address"
+      class="outline outline-offset-2 outline-1"
+      placeholder="Enter a NYC Address"
+      type="text"
+      name="address"
+      bind:value={name}
+      autocomplete="off"
+      on:keyup={_search}
+    />
+    <ul class="m-0 pl-2" role="combobox" aria-label="address list">
+      {#each searchAddrs as addr}
+        <li
+          role="option"
+          tabindex="0"
+          class=""
+          on:click={() => _setLocation(addr)}
+          on:keydown={(e) => e.key === "Enter" && _setLocation(addr)}
+        >
+          {addr.name}
+        </li>
+      {/each}
+    </ul>
+  </div>
   <input type="submit" value="Search" />
 </form>
 
 <style>
   form {
-    font-family: "Lato", sans-serif;
     font-size: 0.9em;
     display: flex;
     align-items: center;
   }
-  form div{
-      flex: 1;
-      margin-right: 5px;
+  form div {
+    flex: 1;
+    margin-right: 5px;
   }
   #address {
     width: 100%;
@@ -107,15 +119,5 @@
     cursor: pointer;
     font-family: "Lato", sans-serif;
     margin-bottom: 5px;
-  }
-
-  ul {
-    padding-left: 10px;
-    color: rgb(61, 61, 61);
-    margin: 0px;
-  }
-
-  li {
-    margin-left: 5px;
   }
 </style>

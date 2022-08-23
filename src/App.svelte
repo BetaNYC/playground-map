@@ -178,7 +178,7 @@
 </script>
 
 <main>
-  <h1>NYC Parks Playgrounds</h1>
+  <h1 class="text-4xl font-bold">NYC Parks Playgrounds</h1>
   <p>
     Enter an address to get parks closest to you, then use filters to refine
     your search. Based on NYC Park's
