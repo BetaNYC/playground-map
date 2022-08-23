@@ -64,11 +64,10 @@
   }
 </script>
 
-<form on:submit|preventDefault={_set}>
-  <div>
+<form on:submit|preventDefault={_set} class="text-base flex justify-center align-top relative">
+  <div class="flex-1 mr-2">
     <input
-      id="address"
-      class="outline outline-offset-2 outline-1"
+      class="outline outline-offset-2 outline-1 w-full p-1 mt-1"
       placeholder="Enter a NYC Address"
       type="text"
       name="address"
@@ -90,34 +89,8 @@
       {/each}
     </ul>
   </div>
-  <input type="submit" value="Search" />
+  <button
+    type="submit"
+    class="bg-green-800 broder-none text-white px-5 py-2 mb-2 pointer-events-auto h-10"
+  >Submit</button>
 </form>
-
-<style>
-  form {
-    font-size: 0.9em;
-    display: flex;
-    align-items: center;
-  }
-  form div {
-    flex: 1;
-    margin-right: 5px;
-  }
-  #address {
-    width: 100%;
-    padding: 5px 15px;
-    box-sizing: border-box;
-    margin-bottom: 5px;
-  }
-
-  input[type="submit"] {
-    background-color: #6a6a6a;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-decoration: none;
-    cursor: pointer;
-    font-family: "Lato", sans-serif;
-    margin-bottom: 5px;
-  }
-</style>
