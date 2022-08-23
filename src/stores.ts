@@ -9,7 +9,7 @@ type Address = {
 export const filters = [
   {
     name: "Accessible ramps/transfer stations, or play elements",
-    color: "#88c659",
+    color: "#56892f",
     checked: false,
     icon: "https://www.nycgovparks.org/common_files/uploaded_content/park_rules_images/image-16931.gif",
     fieldName: "accessible",

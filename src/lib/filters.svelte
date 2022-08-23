@@ -5,7 +5,7 @@
   $selectedFilters = [...$selectedFilters]
 </script>
 
-<div class="w-2/3">
+<div class="flex flex-col">
   {#each $selectedFilters as filter (filter.name)}
     <Checkbox
       name={filter.name}

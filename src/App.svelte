@@ -186,47 +186,26 @@
       >playgrounds page</a
     >.
   </p>
-  <p>Click on the map or select an item on the list for more details.</p>
   <div class="flex-grow my-4 mx-auto w-auto relative">
     <Search />
     <Filters />
   </div>
-  <div class="flex-grow my-4 mx-auto w-auto relative">
+  <p class="italic">
+    Click on the map or select an item on the list for more details.
+  </p>
+  <div class="flex-grow my-4 mx-auto w-auto relative sm:flex-row">
     <div class="flex relative flex-wrap">
-      <div class="is-half">
+      <div class="is-half relative sm:w-1/2 w-full h-[30vh] sm:h-[60vh]">
         <Listings />
       </div>
-      <div class="is-half">
-        <div id="map" use:initMap />
+      <div class="is-half relative sm:w-1/2 w-full h-[30vh] sm:h-[60vh]">
+        <div id="map" use:initMap class="inset-0 absolute w-full h-full" />
       </div>
     </div>
   </div>
-  <Details />
+
+  <h2 class="text-2xl">What does accessible and inclusive icons mean?</h2>
+  <div class="mx-auto w-11/12">
+    <Details />
+  </div>
 </main>
-
-<style>
-  .is-half {
-    flex: none;
-    flex-direction: row;
-    width: 50%;
-    height: 60vh;
-    position: relative;
-  }
-
-  @media screen and (max-width: 600px) {
-    .columns {
-      flex-direction: column;
-    }
-
-    .is-half {
-      width: 100%;
-      height: 30vh;
-    }
-  }
-  #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
-</style>
