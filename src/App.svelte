@@ -195,10 +195,10 @@
   </p>
   <div class="flex-grow my-4 mx-auto w-auto relative sm:flex-row">
     <div class="flex relative flex-wrap">
-      <div class="is-half relative sm:w-1/2 w-full h-[30vh] sm:h-[60vh]">
+      <div class="is-half relative sm:w-1/2 w-full h-[30vh] sm:h-[70vh]">
         <Listings />
       </div>
-      <div class="is-half relative sm:w-1/2 w-full h-[30vh] sm:h-[60vh]">
+      <div class="is-half relative sm:w-1/2 w-full h-[50vh] sm:h-[70vh]">
         <div id="map" use:initMap class="inset-0 absolute w-full h-full" />
       </div>
     </div>

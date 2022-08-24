@@ -47,7 +47,7 @@ export default function (map, props, convert = false, flyTo = true) {
       <a href="${p.url}" target="_blank"><h3 class="text-2xl font-bold leading-5 my-2">${p.name}</h3></a>
       <h4 class="text-xl mb-4 leading-4 text-gray-500">${p.Location}</h4>
       ${distance}
-    ` + icons + `<p class="pt-2 italic"><a href="#listings" class="border-t-2 border-black border-opacity-5">Go back to playground listings.</a></p>`
+    ` + icons + `<p class="pt-2 italic sr-only"><a href="#listings" class="border-t-2 border-black border-opacity-5">Go back to playground listings.</a></p>`
     )
     .addTo(map);
 }
