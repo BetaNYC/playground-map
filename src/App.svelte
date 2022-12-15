@@ -19,7 +19,7 @@
   async function initMap(container) {
     const parksStyle = await (
       await fetch(
-        "https://corsproxy.io/?https://www.nycgovparks.org/web/map/basemap-style.json"
+        "https://4dvj5dcxge.execute-api.us-east-1.amazonaws.com/staging/https://www.nycgovparks.org/web/map/basemap-style.json"
       )
     ).json();
 

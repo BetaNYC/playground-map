@@ -42,7 +42,7 @@ async function fetchPlaygrounds(set) {
   const playgrounds = (
     await (
       await fetch(
-        "https://corsproxy.io/?http://www.nycgovparks.org/bigapps/DPR_Playgrounds_001.json"
+        "https://4dvj5dcxge.execute-api.us-east-1.amazonaws.com/staging/https://www.nycgovparks.org/bigapps/DPR_Playgrounds_001.json"
       )
     ).json()
   ).map((playground, i) => {
