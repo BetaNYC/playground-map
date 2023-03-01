@@ -95,12 +95,14 @@
           stops: [
             [10, 2],
             [14, 5],
+            [18, 12],
           ],
         },
         "circle-stroke-width": {
           stops: [
             [8, 0.5],
             [14, 3],
+            [18, 6],
           ],
         },
         "circle-pitch-scale": "map",
