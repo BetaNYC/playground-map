@@ -66,11 +66,11 @@
 
 <form
   on:submit|preventDefault={_set}
-  class="text-xl flex justify-center align-top relative"
+  class="text-xl flex justify-center align-top relative items-center"
 >
   <div class="flex-1 mr-2">
     <input
-      class="outline outline-offset-2 outline-1 w-full p-1 mt-1 mb-3
+      class="outline outline-offset-2 outline-1 w-full p-1
       focus:outline-4"
       placeholder="Enter a NYC Address"
       type="text"
@@ -95,7 +95,7 @@
   </div>
   <button
     type="submit"
-    class="bg-green-800 broder-none text-white px-5 mb-2 pointer-events-auto h-10
-    focus:outline-4">Submit</button
+    class="bg-blue-600 broder-none text-white px-5 pointer-events-auto h-10
+    focus:outline-3 focus:outline-blue-800 ">Submit</button
   >
 </form>

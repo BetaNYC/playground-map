@@ -10,6 +10,9 @@
 
   import createPopup from "./lib/createPopup";
 
+  import beta from "./static/BetaNYC_short_white_on_blue.png";
+  import dinowitz from "./static/dinowitz-logo.jpg";
+
   let map;
   let styleLoaded = false;
   let mapLoaded = false;
@@ -182,7 +185,9 @@
   <p>
     Enter an address to get parks closest to you, then use filters to refine
     your search. Based on NYC Park's
-    <a href="https://www.nycgovparks.org/facilities/playgrounds"
+    <a
+      class="text-blue-500 hover:underline"
+      href="https://www.nycgovparks.org/facilities/playgrounds"
       >playgrounds page</a
     >.
   </p>
@@ -204,8 +209,23 @@
     </div>
   </div>
 
-  <h2 class="text-3xl my-2">What do the accessible and inclusive icons mean?</h2>
+  <h2 class="text-3xl mt-10">
+    What do the accessible and inclusive icons mean?
+  </h2>
   <div class="mx-auto w-11/12">
     <Details />
+  </div>
+  <div class="flex flex-row h-14 w-full items-center place-content-evenly mt-2">
+    <p class="text-sm text-gray-800 italic">This webmap was created in partnership between the Office of Council Member Eric Dinowitz and BetaNYC.</p>
+    <a href="https://council.nyc.gov/eric-dinowitz/" target="_blank" rel="noopener noreferrer">
+      <img
+        class="image h-12"
+        src={dinowitz}
+        alt="Council Member Eric Dinowitz"
+      />
+    </a>
+    <a href="https://beta.nyc/" target="_blank" rel="noopener noreferrer">
+      <img class="image h-12" src={beta} alt="BetaNYC" />
+    </a>
   </div>
 </main>
