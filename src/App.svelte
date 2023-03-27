@@ -186,7 +186,7 @@
   <h1 class="text-5xl font-bold">NYC Parks Playgrounds</h1>
   <p>
     Enter an address to get parks closest to you, then use filters to refine
-    your search. Based on NYC Park's
+    your search. Uses NYC Park's data and basemap. See their version of the map on the
     <a
       class="text-blue-500 hover:underline"
       href="https://www.nycgovparks.org/facilities/playgrounds"
