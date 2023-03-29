@@ -15,14 +15,14 @@ export const filters = [
     fieldName: "accessible",
   },
   {
-    name: "Comfort stations",
+    name: "Public restroom",
     color: "#5394ac",
     checked: false,
     icon: "https://www.nycgovparks.org/common_images/img/restroom.gif",
     fieldName: "comfort_station",
   },
   {
-    name: "ADA accessible comfort stations",
+    name: "ADA accessible public restroom",
     color: "#00729d",
     checked: false,
     icon: "https://www.nycgovparks.org/common_images/img/restroom_accessible.gif",

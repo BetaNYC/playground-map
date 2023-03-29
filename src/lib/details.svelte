@@ -28,8 +28,8 @@
       class="image"
       src="https://www.nycgovparks.org/common_images/img/restroom.gif"
     />
-    <h3 class="text-xl font-base">Comfort Station</h3>
-    A restroom icon indicates that the playground includes a comfort station.
+    <h3 class="text-xl font-base">Public restroom</h3>
+    A restroom icon indicates that the playground includes a Public restroom.
   </div>
   <div class="row mt-2 mb-4 flex-1">
     <img
@@ -37,8 +37,8 @@
       class="image"
       src="https://www.nycgovparks.org/common_images/img/restroom_accessible.gif"
     />
-    <h3 class="text-xl font-base">ADA Accessible Comfort Station</h3>
-    A restroom icon with a wheelchair indicates that the comfort station meets the
+    <h3 class="text-xl font-base">ADA Accessible public restroom</h3>
+    A restroom icon with a wheelchair indicates that the public restroom meets the
     standards of the Americans with Disabilities Act
   </div>
 </div>
