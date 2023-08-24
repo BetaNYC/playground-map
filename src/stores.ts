@@ -46,10 +46,15 @@ async function fetchPlaygrounds(set) {
       )
     ).json()
   ).map((playground, i) => {
+    //figure out which ways the coordinates are correct... parks' api sometime mixes lng,lat
+    const y = + playground.lon
+    const x = + playground.lat
+    let coordinates = x < 0 ? [x, y] : [y, x]
+
     //rename columns
     playground = {
       ...playground,
-      coordinates: [+playground.lat, +playground.lon],
+      coordinates,
       id: i + 1,
       url: "https://www.nycgovparks.org/parks/" + playground.Prop_ID + "/facilities/playgrounds",
       propId: playground.Prop_ID,
