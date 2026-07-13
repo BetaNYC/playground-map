@@ -20,11 +20,21 @@
     "pk.eyJ1IjoiemhpayIsImEiOiJjaW1pbGFpdHQwMGNidnBrZzU5MjF5MTJiIn0.N-EURex2qvfEiBsm-W9j7w";
 
   async function initMap(container) {
+    const PROXY =
+      "https://4dvj5dcxge.execute-api.us-east-1.amazonaws.com/staging/";
+
     const parksStyle = await (
-      await fetch(
-        "https://4dvj5dcxge.execute-api.us-east-1.amazonaws.com/staging/https://www.nycgovparks.org/web/map/basemap-style.json"
-      )
+      await fetch(PROXY + "https://www.nycgovparks.org/web/map/basemap-style.json")
     ).json();
+
+    // Route the parks tile URLs through CORS proxy
+    for (const src of Object.values(parksStyle.sources ?? {}) as any[]) {
+      if (src.tiles) {
+        src.tiles = src.tiles.map((t) =>
+          t.startsWith("https://www.nycgovparks.org/") ? PROXY + t : t
+        );
+      }
+    }
 
     //prefilter out labels
     const noLabelsStyle = {
