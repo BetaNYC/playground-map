@@ -4,9 +4,24 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 const page = readFileSync(new URL('../public/whats-changed.html', import.meta.url), 'utf8');
 const count = (re) => (page.match(re) || []).length;
+// Expected counts come from the file's own parse, so a new entry, an Update line or an
+// Unreleased entry never breaks these tests.
+const parsed = JSON.parse(
+	execFileSync('python3', [
+		fileURLToPath(new URL('../scripts/whats_changed.py', import.meta.url)),
+		'json',
+		fileURLToPath(new URL('../WHATS-CHANGED.md', import.meta.url)),
+	], { encoding: 'utf8' })
+);
+const entries = parsed.entries.filter((e) => e.valid);
+const corrections = entries.filter((e) => e.tags.includes('Correction')).length;
+const tagsInUse = new Set(entries.flatMap((e) => e.tags.filter((t) => t !== 'Correction')));
+const choices = tagsInUse.size + (corrections ? 1 : 0);
 
 test('one h1, and it says What\'s changed', () => {
 	assert.equal(count(/<h1[\s>]/g), 1);
@@ -20,18 +35,23 @@ test('skip link and the five landmarks', () => {
 	assert.match(page, /<html lang="en"/);
 });
 
-test('every entry has a <time> with the month spelled out', () => {
-	const entries = count(/<article class="wc-entry"/g);
-	assert.ok(entries >= 8, `entries: ${entries}`);
-	const times = [...page.matchAll(/<time datetime="(\d{4}-\d{2}-\d{2})">([^<]+)<\/time>/g)];
-	assert.equal(times.length, entries);
-	for (const [, , text] of times) assert.match(text, /^[A-Z][a-z]+ \d{1,2}, \d{4}$/);
+test('every entry is shown, and each dated one has a <time> for its date, month spelled out', () => {
+	assert.equal(count(/<article class="wc-entry"/g), entries.length);
+	for (const e of entries.filter((x) => !x.unreleased)) {
+		const m = page.match(new RegExp(`<time datetime="${e.date}">([^<]+)</time>`));
+		assert.ok(m, `no <time> for ${e.date}`);
+		assert.match(m[1], /^[A-Z][a-z]+ \d{1,2}, \d{4}$/);
+	}
 });
 
-test('the filter is a fieldset with a legend, hidden until its script runs, with a polite live region', () => {
+test('the filter: one box per choice in use, hidden until its script runs, polite live region', () => {
+	if (choices < 2) {
+		assert.doesNotMatch(page, /<legend>Show changes to<\/legend>/);
+		return;
+	}
 	assert.match(page, /<div class="wc-filters" hidden>/);
 	assert.match(page, /<legend>Show changes to<\/legend>/);
-	assert.equal(count(/<input type="checkbox"/g), 4);
+	assert.equal(count(/<input type="checkbox"/g), choices);
 	assert.match(page, /role="status" aria-live="polite"/);
 	assert.match(page, /box\.hidden = false/);
 });

@@ -16,7 +16,7 @@ To report a bug in the map, or to ask for a new feature, [open an issue on GitHu
 ## 2023-08-24: Some playgrounds were placed in the wrong spot
 
 - **Tags:** Data, Correction
-- **What changed:** NYC Parks' playground list sometimes gives a playground's two map coordinates the other way round. Until this fix, the map read every row the same way, so it put those playgrounds far from New York City, and left them out of the nearest playgrounds and the count within one mile of an address. The map now reads each row the right way. The record does not show which playgrounds were affected, or since when.
+- **What changed:** NYC Parks' playground list sometimes gives a playground's two map coordinates the other way round. Until this fix, the map read every row the same way, so it put those playgrounds far from New York City, and left them out of the nearest playgrounds and the count within one mile of an address. The map now reads each row the right way. This may have been so since the map went live. The record does not show which playgrounds were affected.
 - **If you used the old numbers:** If you noted the nearest playgrounds to an address, or how many are within one mile, before August 24, 2023, look again: the old list may have left some out. Nothing to re-check after that date.
 - **More detail:** [The fix](https://github.com/BetaNYC/playground-map/commit/e83f795)
 
