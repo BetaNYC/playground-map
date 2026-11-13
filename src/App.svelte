@@ -241,3 +241,20 @@
     </a>
   </div>
 </main>
+<footer class="max-w-screen-xl mx-auto px-6 pb-8 text-gray-700">
+  <!-- Built from WHATS-CHANGED.md into public/whats-changed.html (see README). -->
+  <p>
+    <a href="./whats-changed.html" class="whats-changed-link">What's changed</a>:
+    fixes and corrections to this map, newest first.
+  </p>
+</footer>
+
+<style>
+  .whats-changed-link {
+    color: #2359a8;
+    text-decoration: underline;
+    display: inline-block;
+    min-height: 44px;
+    line-height: 44px;
+  }
+</style>

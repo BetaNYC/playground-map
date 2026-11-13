@@ -1,0 +1,31 @@
+# BetaNYC What's changed standard: on every pull request to main (and on push), check that
+# WHATS-CHANGED.md parses, that old entries were only appended to, and that the page built from
+# it (public/whats-changed.html) is current. The repo had no pull request workflow before.
+# scripts/whats_changed.py is a copy from the BetaNYC workspace; never edit it here.
+name: What's changed
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  whats-changed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the append-only check compares with the base branch
+
+      - name: Check WHATS-CHANGED.md and the page built from it
+        run: |
+          python3 scripts/whats_changed.py check WHATS-CHANGED.md --base-ref "origin/${{ github.base_ref || 'main' }}"
+          python3 scripts/whats_changed.py render WHATS-CHANGED.md --format page --out public/whats-changed.html --site-name "NYC Parks Playgrounds" --home-url ./ --repo-url https://github.com/BetaNYC/playground-map --check
+
+      - name: Page tests (node's own test runner, no install)
+        run: node --test tests/*.test.js
