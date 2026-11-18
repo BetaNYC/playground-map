@@ -9,6 +9,7 @@
   import Listings from "./lib/listings.svelte";
 
   import createPopup from "./lib/createPopup";
+  import savedParksStyle from "./static/parks-basemap-style.json";
 
   import beta from "./static/BetaNYC_short_white_on_blue.png";
   import dinowitz from "./static/dinowitz-logo.jpg";
@@ -19,13 +20,23 @@
   mapboxgl.accessToken =
     "pk.eyJ1IjoiemhpayIsImEiOiJjaW1pbGFpdHQwMGNidnBrZzU5MjF5MTJiIn0.N-EURex2qvfEiBsm-W9j7w";
 
+  const STYLE_URL = "https://www.nycgovparks.org/web/map/basemap-style.json";
+
   async function initMap(container) {
     const PROXY =
       "https://4dvj5dcxge.execute-api.us-east-1.amazonaws.com/staging/";
 
-    const parksStyle = await (
-      await fetch(PROXY + "https://www.nycgovparks.org/web/map/basemap-style.json")
-    ).json();
+    // Parks serves the style with access-control-allow-origin: *, so no relay is needed.
+    // If that request ever fails, fall back to the copy saved in this repo so the map still draws.
+    let parksStyle;
+    try {
+      const res = await fetch(STYLE_URL);
+      if (!res.ok) throw new Error(`style request returned ${res.status}`);
+      parksStyle = await res.json();
+    } catch (err) {
+      console.warn("Parks basemap style failed to load; using the saved copy.", err);
+      parksStyle = structuredClone(savedParksStyle);
+    }
 
     // Route the parks tile URLs through CORS proxy
     for (const src of Object.values(parksStyle.sources ?? {}) as any[]) {
